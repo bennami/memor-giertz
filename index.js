@@ -9,7 +9,7 @@ const cards = [
         imgUrl: 'assets/img/code.png'
     },
     {
-        name: 'qr',
+        name: 'monkey',
         imgUrl: 'assets/img/monkey.png'
     },
     {
@@ -29,6 +29,13 @@ allCardImgUrl = cards.concat(cards);
 //shuffle
 allCardImgUrl.sort(() => Math.random() - 0.5);
 
+let counter = 0;
+let selectedCards = [];
+function nextRound(){
+         counter = 0;
+         selectedCards = [];
+}
+
 //generate htlm tags and add click event
 allCardImgUrl.forEach(img=>{
         //generate divs with imgs and append to div container
@@ -42,14 +49,35 @@ allCardImgUrl.forEach(img=>{
         const canvas = document.querySelector(".mem-canvas");
         canvas.appendChild(cardContainer);
 
-    //flip card on click
+    // flip card on click
     // have a counter to prevent clicking on more than 2 cards,
     // push the 2 cards in array and do a check to see if the data matches
     // if its no match flip em back
     card.addEventListener("click", ()=>{
+        if(counter < 2){
+            card.style.opacity ="1";
+            selectedCards.push(card);
+            console.log(card.dataset.id);
+            counter++;
+        }
+        if(selectedCards[1] !== undefined){
+            if(selectedCards[0].dataset.id  === selectedCards[1].dataset.id ){
 
-       card.style.opacity ="1";
-       console.log(card);
+                alert("u has match");
+                nextRound();
+
+            }else{
+                selectedCards.forEach((card)=>{
+                    card.style.opacity ="0"
+                });
+                nextRound();
+            }
+        }
+
+
+
+
+
 
     });
 });
