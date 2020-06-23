@@ -1,8 +1,5 @@
 const cards = [
 
-    {   name: 'unflipped',
-        imgUrl: 'assets/img/becode.png'
-    },
     {
         name: 'qr',
         imgUrl: 'assets/img/qr.png'
@@ -17,14 +14,36 @@ const cards = [
     }
 ]
 
+//make a copy to get pairs
+allCardImgUrl = cards.concat(cards);
 
-document.addEventListener("load", ()=>{
 
-    cards.forEach(img=>{
+//shuffle
+allCardImgUrl.sort(() => Math.random() - 0.5);
+
+
+
+
+
+
+
+//create imgs
+let arrCards = [];
+    allCardImgUrl.forEach(img=>{
+        //generate divs with imgs and append to div container
+        let cardContainer = document.createElement('div');
+        cardContainer.style.backgroundImage = 'Url("assets/img/becode.png")';
         let card = document.createElement('img');
-        card.setAttribute('src', img.imgUrl)
-    })
-    const canvas = document.querySelector(".mem-canvas");
+        card.setAttribute('src', img.imgUrl);
+        cardContainer.appendChild(card);
+        const canvas = document.querySelector(".mem-canvas");
+        canvas.appendChild(cardContainer);
+
+        //flip card on click
+        card.addEventListener("click", ()=>{
+        card.style.opacity = '1';
+        });
+    });
 
 
-});
+

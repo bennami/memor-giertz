@@ -1,0 +1,15 @@
+.mem-canvas{
+    display: flex;
+}
+div{
+    background-color: black;
+    width: 100px;
+    height: 100px;
+    margin: 0.5rem;
+}
+img {
+    opacity: 0;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+}
