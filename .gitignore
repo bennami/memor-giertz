@@ -1,0 +1,8 @@
+.idea
+.idea/.gitignore
+.idea/memory-giertz.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+node_modules/
+
